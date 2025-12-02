@@ -1,0 +1,32 @@
+title: Wdichost Suspicious Network Connection
+id: 012c345f-6789-0123-4567-890123456789
+status: experimental
+description: Detects the Windows Defender Host process (wdichost.exe) making outbound network connections to non-private IP addresses, indicating potential DLL side-loading abuse.
+author: Alex Dumas
+date: 2025-12-01
+logsource:
+    category: network_connection
+    product: windows
+detection:
+    selection_img:
+        Image|endswith: '\wdichost.exe'
+    # Exclude Private IP ranges (10.x, 192.168.x, 172.16-31.x, 127.x)
+    filter_private_ips:
+        DestinationIp|startswith:
+            - '10.'
+            - '192.168.'
+            - '172.16.'
+            - '172.17.'
+            - '172.18.'
+            - '172.19.'
+            - '172.2'
+            - '172.30.'
+            - '172.31.'
+            - '127.'
+            - '::1'
+    condition: selection_img and not filter_private_ips
+level: high
+tags:
+    - attack.command_and_control
+    - attack.defense_evasion
+    - attack.t1574.002
