@@ -1,0 +1,26 @@
+title: Suspicious RPMSG Attachment Delivery
+id: 1a2b3c4d-5678-90ab-cdef-1234567890ab
+status: experimental
+description: Detects the delivery of emails containing .rpmsg (Rights Management) attachments combined with suspicious subject lines, often used in credential harvesting campaigns.
+author: Alex Dumas
+date: 2025-12-02
+logsource:
+    category: email
+    definition: 'Requirements: SIEM must ingest email gateway logs (Exchange/M365/Proofpoint)'
+detection:
+    selection_attachment:
+        FileName|endswith: '.rpmsg'
+    selection_keywords:
+        Subject|contains|any:
+            - 'encrypted'
+            - 'message'
+            - 'secure'
+            - 'confidential'
+            - 'one-time passcode'
+            - 'review required'
+            - 'voice message'
+    condition: selection_attachment and selection_keywords
+level: medium
+tags:
+    - attack.initial_access
+    - attack.t1566.001
