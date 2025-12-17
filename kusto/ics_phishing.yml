@@ -1,0 +1,10 @@
+DeviceProcessEvents
+| where InitiatingProcessFileName =~ "outlook.exe"
+///
+| where FileName in~ ("chrome.exe", "msedge.exe", "firefox.exe", "brave.exe")
+/// add custom indicators
+| where ProcessCommandLine has_any ("http:", "https:")
+//exclusions
+| where not(ProcessCommandLine has_any ("yourcompany.com", "microsoft.com", "zoom.us", "teams.microsoft.com"))
+| project Timestamp, AccountUpn, DeviceName, InitiatingProcessFileName, FileName, ProcessCommandLine
+| sort by Timestamp desc
