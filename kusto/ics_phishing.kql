@@ -1,6 +1,6 @@
 DeviceProcessEvents
 | where InitiatingProcessFileName =~ "outlook.exe"
-///
+/// looks for browser launches
 | where FileName in~ ("chrome.exe", "msedge.exe", "firefox.exe", "brave.exe")
 /// add custom indicators
 | where ProcessCommandLine has_any ("http:", "https:")
