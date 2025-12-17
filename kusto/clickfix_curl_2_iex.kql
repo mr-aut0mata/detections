@@ -1,0 +1,12 @@
+DeviceProcessEvents
+| where Timestamp > ago(7d)
+/// Looks for shell interpreters
+| where FileName in~ ("powershell.exe", "pwsh.exe", "cmd.exe")
+/// ClickFix Pattern: Curl pulling content and piping (|) to Execute (iex)
+| where ProcessCommandLine has "curl" 
+  and ProcessCommandLine has_any ("iex", "Invoke-Expression") 
+  and ProcessCommandLine has "|"
+/// Context: Usually initiated by the User via Explorer (Run Dialog) or directly from a Browser
+| where InitiatingProcessFileName has_any ("explorer.exe", "chrome.exe", "msedge.exe", "firefox.exe", "brave.exe")
+| project Timestamp, DeviceName, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName, InitiatingProcessCommandLine
+| sort by Timestamp desc
