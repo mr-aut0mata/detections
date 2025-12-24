@@ -1,0 +1,11 @@
+# Data files
+*.raw
+*.mem
+*.img
+*.bin
+
+# Python environment
+__pycache__/
+*.py[cod]
+.env
+venv/
