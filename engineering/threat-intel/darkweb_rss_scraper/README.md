@@ -12,6 +12,8 @@ This script identifies new forum threads and leak listings by parsing XML feeds 
     ```bash
     pip install requests[socks] feedparser
     ```
+### Considerations
+Ensure you have run pip install requests[socks] feedparser before running the final script. If you encounter a connection error, verify that your Tor Browser is open (if using port 9150) or the Tor Service is started (if using port 9050).
 
 ### Configuration
 1.  **Proxies:** If using the Tor Browser instead of the Tor Service, change `TOR_PROXY` to use port `9150`.
