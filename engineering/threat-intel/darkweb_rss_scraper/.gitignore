@@ -1,0 +1,16 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local config & logs
+.env
+*.log
+feeds_history.json
+
+# Large data
+*.xml
+*.html
+
+# Environment
+venv/
+.venv/
