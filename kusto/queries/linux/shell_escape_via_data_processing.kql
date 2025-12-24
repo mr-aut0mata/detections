@@ -1,0 +1,3 @@
+DeviceProcessEvents
+| where FileName =~ "awk"
+| where ProcessCommandLine contains "system(" and ProcessCommandLine has_any ("/bin/sh", "/bin/bash")
