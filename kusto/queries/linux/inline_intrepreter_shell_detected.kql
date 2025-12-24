@@ -1,0 +1,3 @@
+DeviceProcessEvents
+| where FileName in~ ("python", "python3", "perl", "ruby")
+| where ProcessCommandLine has_all ("-c", "import", "pty", "spawn") or ProcessCommandLine has_all ("-e", "exec", "socket")
