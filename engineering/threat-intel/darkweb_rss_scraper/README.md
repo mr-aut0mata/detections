@@ -1,6 +1,6 @@
 # Dark Web RSS Monitor
 
-A specialized threat intelligence tool that scrapes RSS feeds from dark web hacking forums to find mentions of specific corporate keywords.
+A specialized threat intelligence tool that scrapes RSS feeds from dark web hacking forums to find mentions of specific custom keywords.
 
 ### How it works
 This script identifies new forum threads and leak listings by parsing XML feeds via the Tor network. It is significantly stealthier than traditional web scraping because it requests only a few hundred lines of XML rather than full HTML pages with tracking scripts.
