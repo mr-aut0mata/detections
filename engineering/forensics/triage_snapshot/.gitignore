@@ -1,0 +1,19 @@
+---
+
+### 3. The .gitignore
+
+```text
+# Ignore generated triage reports
+triage_*.json
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env
+
+# OS-specific
+.DS_Store
+Thumbs.db
