@@ -16,3 +16,6 @@ This script extracts execution history from Windows Prefetch (.pf) files. It is 
 Analyze the system's prefetch directory (requires Admin/Elevated privileges):
 ```bash
 python prefetch_parser.py -d C:\Windows\Prefetch
+
+Analyze a specific file:
+python prefetch_parser.py -f CMD.EXE-AC12B3.pf
