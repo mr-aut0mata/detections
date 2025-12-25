@@ -1,4 +1,0 @@
-DeviceProcessEvents
-| where FileName =~ "curl"
-| where ProcessCommandLine has_any ("-d", "--data", "-F", "--form") and ProcessCommandLine contains "@"
-| project Timestamp, DeviceId, DeviceName, ReportId, AccountName, FileName, ProcessCommandLine, InitiatingProcessFileName
